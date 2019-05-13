@@ -115,8 +115,8 @@ void printboth(const char* left_right) {
   if (len > 0) { strncpy(buf, left_right, len); }
   buf[len - 1] = '\0';
   printf("%-50s %s", buf, left_right); }
-
-  void print_diff(FILE *f1, FILE *f2, int ar[]){
+//Added code -----------------------------------------------------------
+  void print_diff(FILE *f1, FILE *f2, int ar[]){  //looks through the files to print the lines given by the array
     int l = 0, s = 0;
     char c1 = getc(f1);
     char c2 = getc(f2);
@@ -141,7 +141,7 @@ void printboth(const char* left_right) {
     }
   }
 
-void diff_files(FILE *f1, FILE *f2){
+void diff_files(FILE *f1, FILE *f2){  //compares the files and notes the lines contianing differences
   char c1 = getc(f1);
   char c2 = getc(f2);
   int l = 0, s = 0;
@@ -158,9 +158,9 @@ void diff_files(FILE *f1, FILE *f2){
     c1 = getc(f1);
     c2 = getc(f2);
   }
-  print_diff(f1, f2, stored_diff);
+  print_diff(f1, f2, stored_diff);  //called to print the lines that contained the differences
 }
-
+//---------------------------------------------------------------
 int main(int argc, const char * argv[]) {
   char buf[BUFLEN];
   char *strings1[MAXSTRINGS], *strings2[MAXSTRINGS];
