@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "diff.h"
 
 #define ARGC_ERROR 1
 #define BUFLEN 256
@@ -21,16 +22,6 @@ struct para {
   int start;
   int stop;
 };
-
-para* para_make(char* base[], int size, int start, int stop);
-para* para_first(char* base[], int size);
-para* para_next(para* p);
-size_t para_filesize(para* p);
-size_t para_size(para* p);
-char** para_base(para* p);
-char* para_info(para* p);
-int   para_equal(para* p, para* q);
-void para_print(para* p, void (*fp)(const char*));
 
 para* para_make(char* base[], int filesize, int start, int stop) {
   para* p = (para*) malloc(sizeof(para));
